@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Donation - Amma Pillala Anadhashramam</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Make a Donation</h1>
+    </header>
+
+    <section>
+        <h2>Bank Details for Donation</h2>
+        <p>We are grateful for your generosity. You can donate to Amma Pillala Anadhashramam via bank transfer. Below are the details:</p>
+        
+        <ul>
+            <li><strong>Bank Account Number:</strong> 1234567890</li>
+            <li><strong>Bank Name:</strong> XYZ Bank</li>
+            <li><strong>IFSC Code:</strong> XYZB1234567</li>
+            <li><strong>Branch:</strong> ABC Branch, City</li>
+        </ul>
+
+        <h3>QR Code for Donation</h3>
+        <img src="QR 2025-01-17 at 8.28.48 PM.jpeg" alt="QR Code for Donation" style="width: 200px; height: 200px;">
+        
+        <h3>Upload Payment Details</h3>
+        <form action="donate.php" method="post" enctype="multipart/form-data">
+            <label for="donor_name">Your Name:</label>
+            <input type="text" name="donor_name" id="donor_name" required>
+
+            <label for="amount">Amount:</label>
+            <input type="number" name="amount" id="amount" required>
+
+            <label for="transaction-number">Transaction Number:</label>
+            <input type="text" name="transaction-number" id="transaction-number" required>
+
+            <label for="payment-slip">Upload Payment Slip:</label>
+            <input type="file" name="payment-slip" id="payment-slip" required>
+
+            <button type="submit">Submit Payment Details</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Amma Pillala Anadhashramam. All rights reserved.</p>
+    </footer>
+</body>
+</html>

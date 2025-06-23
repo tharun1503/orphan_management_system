@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor a Child - Amma Pillala Anadhashramam</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Add some basic styling */
+        .packages {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .package {
+            border: 1px solid #ccc;
+            padding: 1rem;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .package button {
+            margin-top: 1rem;
+            background-color: #6c63ff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .package button:hover {
+            background-color: #514cb0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sponsor a Child</h1>
+    </header>
+
+    <section>
+        <h2>Choose a Sponsorship Package</h2>
+        <p>Your sponsorship helps provide essential services for orphaned children. Choose a package below to make a lasting impact:</p>
+
+        <div class="packages">
+            <div class="package">
+                <h3>School Fee</h3>
+                <p>Provide a year's worth of school fees for a child.</p>
+                <p><strong>Amount:</strong> ₹5,000</p>
+                <button onclick="openSponsorshipForm('School Fee', 5000)">Sponsor Now</button>
+            </div>
+            
+            <div class="package">
+                <h3>Uniform & Supplies</h3>
+                <p>Cover the cost of school uniforms and supplies for a child.</p>
+                <p><strong>Amount:</strong> ₹2,500</p>
+                <button onclick="openSponsorshipForm('Uniform & Supplies', 2500)">Sponsor Now</button>
+            </div>
+            
+            <div class="package">
+                <h3>Clothing & Food</h3>
+                <p>Provide a child with clothes and a nutritious food kit.</p>
+                <p><strong>Amount:</strong> ₹3,000</p>
+                <button onclick="openSponsorshipForm('Clothing & Food', 3000)">Sponsor Now</button>
+            </div>
+            
+            <div class="package">
+                <h3>Full Care Package</h3>
+                <p>Cover a child's full care, including school, food, clothing, and medical care.</p>
+                <p><strong>Amount:</strong> ₹10,000</p>
+                <button onclick="openSponsorshipForm('Full Care Package', 10000)">Sponsor Now</button>
+            </div>
+        </div>
+
+        <h3>How Your Sponsorship Helps</h3>
+        <ul>
+            <li>Ensure access to quality education</li>
+            <li>Provide nutritious meals and snacks</li>
+            <li>Offer medical care and vaccinations</li>
+            <li>Give emotional and psychological support</li>
+        </ul>
+
+        <p>Your support makes a huge difference in the lives of these children. Thank you for being a part of their journey.</p>
+
+   <!-- Sponsorship Form Modal -->
+<div id="sponsorship-modal" style="display:none;">
+    <h2>Sponsorship Form</h2>
+    <form id="sponsorship-form" action="backend/sponsor.php" method="POST">
+        <input type="hidden" name="package_name" id="package_name">
+        <input type="hidden" name="amount" id="amount">
+        <label for="sponsor_name">Your Name:</label>
+        <input type="text" name="sponsor_name" id="sponsor_name" required>
+
+        <label for="child_id">Child ID:</label>
+        <input type="number" name="child_id" id="child_id" required>
+
+        <button type="submit">Sponsor Now</button>
+    </form>
+</div>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Amma Pillala Anadhashramam. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openSponsorshipForm(packageName, amount) {
+            document.getElementById('package_name').value = packageName;
+            document.getElementById('amount').value = amount;
+            document.getElementById('sponsorship-modal').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

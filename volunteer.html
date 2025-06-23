@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer With Us - Amma Pillala Anadhashramam</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Style to align form elements line by line */
+        form label, form input, form textarea, form button {
+            display: block;
+            margin: 1rem 0;
+            width: 100%;
+        }
+
+        form input, form textarea {
+            padding: 0.5rem;
+            font-size: 1rem;
+        }
+
+        form button {
+            background-color: #6c63ff;
+            color: #fff;
+            border: none;
+            padding: 0.7rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        form button:hover {
+            background-color: #514cb0;
+        }
+
+        #thank-you-message {
+            margin-top: 2rem;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Volunteer With Us</h1>
+    </header>
+
+    <section>
+        <h2>Volunteer Application Form</h2>
+        <form id="volunteer-form" action="backend/volunteer.php" method="POST"> <!-- Updated action -->
+            <label for="name">Full Name:</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="mobile">Mobile Number:</label>
+            <input type="text" name="mobile" id="mobile" required>
+
+            <label for="address">Address:</label>
+            <textarea name="address" id="address" rows="4" required></textarea>
+
+            <label for="aadhar">Aadhar Number:</label>
+            <input type="text" name="aadhar" id="aadhar" required>
+
+            <label for="education">Educational Qualifications:</label>
+            <input type="text" name="education" id="education" required>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="thank-you-message" style="display:none;">
+            <h3>Thank you for filling out the form. We will contact you soon!</h3>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Amma Pillala Anadhashramam. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Handle form submission
+        document.getElementById('volunteer-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Create a FormData object to send the form data
+            const formData = new FormData(this);
+
+            // Send the form data to the PHP file
+            fetch('backend/volunteer.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    document.getElementById('thank-you-message').style.display = 'block';
+                    document.getElementById('volunteer-form').reset();
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting the form.');
+            });
+        });
+    </script>
+</body>
+</html>
